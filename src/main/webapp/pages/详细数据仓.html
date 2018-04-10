@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <!-- Bootstrap 3.3.7 -->
+    <link href="../../plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link href="../../plugins/Ionicons/css/ionicons.min.css" rel="stylesheet"/>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../plugins/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <link href="../../plugins/adminLTE/dist/css/AdminLTE.min.css" rel="stylesheet"/>
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="../../plugins/adminLTE/dist/css/skins/all-skins.min.css" rel="stylesheet"/>
+    <!--TreeView-->
+    <link href="../../plugins/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet"/>
+</head>
+<body class="hold-transition skin-blue sidebar-mini" style="background-color:#ecf0f5">
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>20</h3>
+                    <p>报警信息</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-warning"></i>
+                </div>
+                <a href="#" class="small-box-footer">详细信息 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6 ">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>2</h3>
+                    <p>安防信息</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-shield"></i>
+                </div>
+                <a href="#" class="small-box-footer">详细信息 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>65</h3>
+                    <p>预警信息</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-bell"></i>
+                </div>
+                <a href="#" class="small-box-footer">详细信息 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>85</h3>
+                    <p>操作历史记录</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">详细信息 <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">预警报告</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="text-center">
+                                <strong>日期：2017.1 - 2018.1</strong>
+                            </p>
+                            <div class="chart">
+                                <!-- Sales Chart Canvas -->
+                                <canvas id="salesChart" style="height: 180px;"></canvas>
+                            </div>
+                            <!-- /.chart-responsive -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <p class="text-center">
+                                <strong>总体情况</strong>
+                            </p>
+                            <!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">报警次数</span>
+                                <span class="progress-number"><b>300</b>/600</span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-red" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">预警信息</span>
+                                <span class="progress-number"><b>100</b>/300</span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-green" style="width: 33.33%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                <span class="progress-text">人为操作次数</span>
+                                <span class="progress-number"><b>100</b>/50</span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-aqua" style="width: 200%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">安防信息</span>
+                                <span class="progress-number"><b>250</b>/1000</span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-yellow" style="width: 25%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- ./box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <span class="description-percentage text-red"><i class="fa fa-caret-up"></i> 17%</span>
+                                <h5 class="description-header">50</h5>
+                                <span class="description-text">报警次数</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <span class="description-percentage text-yellow"><i
+                                        class="fa fa-caret-left"></i> 0%</span>
+                                <h5 class="description-header">100</h5>
+                                <span class="description-text">预警信息</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <span class="description-percentage text-red"><i class="fa fa-caret-up"></i> 20%</span>
+                                <h5 class="description-header">100</h5>
+                                <span class="description-text">人为操作次数</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block">
+                                <span class="description-percentage text-green"><i
+                                        class="fa fa-caret-down"></i> 18%</span>
+                                <h5 class="description-header">1200</h5>
+                                <span class="description-text">安防信息</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <div class="col-md-8">
+            <!-- TABLE: LATEST ORDERS -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">智能罐</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th>数据名称</th>
+                                <th>功能</th>
+                                <th>状态</th>
+                                <th>当前值</th>
+                                <th>参考值</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a href="pages/examples/invoice.html">PH</a>
+                                </td>
+                                <td>检测反应物料PH状态</td>
+                                <td><span class="label label-success">正常</span></td>
+                                <td><span class="label label-success">7.2</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#00a65a" data-height="20">6.8-7.2</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="pages/examples/invoice.html">VFA</a>
+                                </td>
+                                <td>掌握发酵核心过程</td>
+                                <td><span class="label label-success">正常</span></td>
+                                <td>—</td>
+                                <td>
+                                    <div class="sparkbar" data-color="#f39c12" data-height="20">—</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="pages/examples/invoice.html">罐体温度1</a>
+                                </td>
+                                <td>发酵温度测量</td>
+                                <td><span class="label label-danger">报警</span></td>
+                                <td><span class="label label-danger">93℃</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#f56954" data-height="20">50℃-60℃</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="pages/examples/invoice.html">产气压力</a>
+                                </td>
+                                <td>产气压力检测</td>
+                                <td><span class="label label-info">预警</span></td>
+                                <td><span class="label label-info">90kPa</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#00c0ef" data-height="20">80kPa-94kPa</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="pages/examples/invoice.html">罐体液位</a>
+                                </td>
+                                <td>罐体液位测量</td>
+                                <td><span class="label label-success">正常</span></td>
+                                <td><span class="label label-success">1m</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#f39c12" data-height="20">0.5m-3m</div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-left">详细数据列表</a>
+                    <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-4">
+            <!-- /.info-box -->
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">智能气柜</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="chart-responsive">
+                                <canvas id="pieChart" height="150"></canvas>
+                            </div>
+                            <!-- ./chart-responsive -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <ul class="chart-legend clearfix">
+                                <li><i class="fa fa-circle-o text-red"></i> &nbsp;CH<sub>4</sub></li>
+                                <li><i class="fa fa-circle-o text-green"></i> &nbsp;O<sub>2</sub></li>
+                                <li><i class="fa fa-circle-o text-yellow"></i> &nbsp;H<sub>2</sub>S</li>
+                                <li><i class="fa fa-circle-o text-aqua"></i> &nbsp;CO<sub>2</sub></li>
+                                <li><i class="fa fa-circle-o text-gray"></i> &nbsp;其他</li>
+                            </ul>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer no-padding">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <a href="#">
+                                气柜内膜容积
+                                <span class="pull-right"> 2000m <sup>3</sup></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">气柜内膜高度 <span class="pull-right text-green"> 10m</span></a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                气柜内外膜之间压力值
+                                <span class="pull-right text-red"> 0.2kPa</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.footer -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">脱硫 </h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th>数据名称</th>
+                                <th>等级</th>
+                                <th>状态</th>
+                                <th>当前值</th>
+                                <th>最佳区间</th>
+                                <th>备注</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a href="pages/examples/invoice.html">出口净化气H2S浓度</a>
+                                </td>
+                                <td>核心</td>
+                                <td><span class="label label-success">正常</span></td>
+                                <td><span class="label label-success">40ppm</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#00a65a" data-height="20">10ppm - 50ppm</div>
+                                </td>
+                                <td>H2S分析仪；输入：DC24V,量程0-200ppm;输出:4-20mA</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="pages/examples/invoice.html">循环液温度</a>
+                                </td>
+                                <td>I级</td>
+                                <td><span class="label label-success">正常</span></td>
+                                <td><span class="label label-success">25℃</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#f39c12" data-height="20">25℃ - 35℃</div>
+                                </td>
+                                <td>温度变送器；输入：DC24V,量程0-100℃;输出:4-20mA</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="pages/examples/invoice.html">沼气流量</a>
+                                </td>
+                                <td>I级</td>
+                                <td><span class="label label-danger">报警</span></td>
+                                <td><span class="label label-danger">120%m<sup>3</sup>/h</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#f56954" data-height="20">
+                                        60%m<sup>3</sup>/h</span> - 105%m<sup>3</sup>/h</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-left">详细数据列表</a>
+                    <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- jQuery 3 -->
+<script src="../../plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Slimscroll -->
+<script src="../../plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- DataTables -->
+<script src="../../plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../../plugins/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../plugins/adminLTE/dist/js/adminlte.min.js"></script>
+<script src="../../plugins/chart/Chart.min.js"></script>
+<script src="../../dist/demo/char.js"></script>
+</body>
+</html>

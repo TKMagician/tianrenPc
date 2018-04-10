@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!-- Bootstrap 3.3.7 -->
+    <link href="../../plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link href="../../plugins/Ionicons/css/ionicons.min.css" rel="stylesheet" />    
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../plugins/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <link href="../../plugins/adminLTE/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="../../plugins/adminLTE/dist/css/skins/all-skins.min.css" rel="stylesheet" />
+    <!--TreeView-->
+    <link href="../../plugins/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet" />
+</head>
+<body class="hold-transition skin-blue sidebar-mini" style="background-color:#ecf0f5">
+    <section class="content container-fluid" style="padding-top: 0px;">
+        <div class="row">
+            <div class="box-body">
+                <div class="alert alert-danger alert-dismissible" style="margin: 0;padding-top: 10px;padding-bottom: 10px;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <span><b><i class="icon fa fa-ban"></i> 警告!</b></span> &nbsp;&nbsp;&nbsp;&nbsp;制浆机转速过快
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="box box-success">
+                    <div class="box-body"> 
+                        <div id="treeview1" class="treeview"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="box">
+                    <div class="box-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>自动</th>
+                                    <th>开运行</th>
+                                    <th>关运行</th>
+                                    <th>开到位</th>
+                                    <th>关到位</th>
+                                    <th>故障</th>
+                                    <th>开门</th>
+                                    <th>关门</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>21</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>5</td>
+                                    <td>8</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- jQuery 3 -->
+    <script src="../../plugins/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- DataTables -->
+    <script src="../../plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../../plugins/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../../plugins/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../plugins/adminLTE/dist/js/adminlte.min.js"></script>
+    <!--TreeView-->
+    <script src="../../plugins/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': false,
+                'autoWidth': false,
+                'pageLength' : 12
+            })
+
+            var defaultData = [
+                {
+                    text: '卸料仓滑动门',
+                    href: '#parent2',
+                    tags: ['0']
+                },
+                {
+                    text: '增氧风机',
+                    href: '#parent1',
+                    tags: ['2'],
+                    nodes: [
+                    {
+                        text: '风机#1',
+                        href: '#child1',
+                        tags: ['0'],
+                    },
+                    {
+                        text: '风机#2',
+                        href: '#child2',
+                        tags: ['0']
+                    }
+                    ]
+                },
+                {
+                    text: '舱底螺旋输送机',
+                    href: '#parent1',
+                    tags: ['2'],
+                    nodes: [
+                        {
+                            text: '舱底螺旋输送机#1',
+                            href: '#child1',
+                            tags: ['0'],
+                        },
+                        {
+                            text: '舱底螺旋输送机2#',
+                            href: '#child2',
+                            tags: ['0']
+                        }
+                    ]
+                },
+                {
+                    text: '输送机',
+                    href: '#parent1',
+                    tags: ['2'],
+                    nodes: [
+                        {
+                            text: '输送机#1',
+                            href: '#child1',
+                            tags: ['0'],
+                        },
+                        {
+                            text: '输送机2#',
+                            href: '#child2',
+                            tags: ['0']
+                        },
+                        {
+                            text: '输送机3#',
+                            href: '#child2',
+                            tags: ['0']
+                        },
+                        {
+                            text: '输送机4#',
+                            href: '#child2',
+                            tags: ['0']
+                        }
+                    ]
+                },
+                {
+                    text: '制浆机',
+                    href: '#parent3',
+                    tags: ['0']
+                },
+                {
+                    text: '格栅机',
+                    href: '#parent4',
+                    tags: ['0']
+                },
+                {
+                    text: '螺旋压榨机',
+                    href: '#parent5',
+                    tags: ['0']
+                }
+            ];
+
+
+            $('#treeview1').treeview({
+                data: defaultData
+            });
+        });
+    </script>
+</body>
+</html>

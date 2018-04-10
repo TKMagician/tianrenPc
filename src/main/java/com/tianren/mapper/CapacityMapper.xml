@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tianren.dao.CapacityMapper" >
+  <resultMap id="BaseResultMap" type="com.tianren.bean.Capacity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gas_production" property="gasProduction" jdbcType="INTEGER" />
+    <result column="power_generation" property="powerGeneration" jdbcType="INTEGER" />
+    <result column="entry_type" property="entryType" jdbcType="INTEGER" />
+    <result column="entry_time" property="entryTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, gas_production, power_generation, entry_type, entry_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from capacity
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from capacity
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tianren.bean.Capacity" >
+    insert into capacity (id, gas_production, power_generation, 
+      entry_type, entry_time)
+    values (#{id,jdbcType=INTEGER}, #{gasProduction,jdbcType=INTEGER}, #{powerGeneration,jdbcType=INTEGER}, 
+      #{entryType,jdbcType=INTEGER}, #{entryTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tianren.bean.Capacity" >
+    insert into capacity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gasProduction != null" >
+        gas_production,
+      </if>
+      <if test="powerGeneration != null" >
+        power_generation,
+      </if>
+      <if test="entryType != null" >
+        entry_type,
+      </if>
+      <if test="entryTime != null" >
+        entry_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gasProduction != null" >
+        #{gasProduction,jdbcType=INTEGER},
+      </if>
+      <if test="powerGeneration != null" >
+        #{powerGeneration,jdbcType=INTEGER},
+      </if>
+      <if test="entryType != null" >
+        #{entryType,jdbcType=INTEGER},
+      </if>
+      <if test="entryTime != null" >
+        #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tianren.bean.Capacity" >
+    update capacity
+    <set >
+      <if test="gasProduction != null" >
+        gas_production = #{gasProduction,jdbcType=INTEGER},
+      </if>
+      <if test="powerGeneration != null" >
+        power_generation = #{powerGeneration,jdbcType=INTEGER},
+      </if>
+      <if test="entryType != null" >
+        entry_type = #{entryType,jdbcType=INTEGER},
+      </if>
+      <if test="entryTime != null" >
+        entry_time = #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tianren.bean.Capacity" >
+    update capacity
+    set gas_production = #{gasProduction,jdbcType=INTEGER},
+      power_generation = #{powerGeneration,jdbcType=INTEGER},
+      entry_type = #{entryType,jdbcType=INTEGER},
+      entry_time = #{entryTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

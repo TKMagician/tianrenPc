@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tianren.dao.AnaerobicTankMapper" >
+  <resultMap id="BaseResultMap" type="com.tianren.bean.AnaerobicTank" >
+    <id column="anaerobic_tank_id" property="anaerobicTankId" jdbcType="INTEGER" />
+    <result column="equipment_id" property="equipmentId" jdbcType="INTEGER" />
+    <result column="ph" property="ph" jdbcType="DOUBLE" />
+    <result column="ts" property="ts" jdbcType="DOUBLE" />
+    <result column="vs" property="vs" jdbcType="DOUBLE" />
+    <result column="vfa" property="vfa" jdbcType="DOUBLE" />
+    <result column="alkalinity" property="alkalinity" jdbcType="DOUBLE" />
+    <result column="ammonia_nitrogen" property="ammoniaNitrogen" jdbcType="DOUBLE" />
+    <result column="cod" property="cod" jdbcType="DOUBLE" />
+    <result column="entry_time" property="entryTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    anaerobic_tank_id, equipment_id, ph, ts, vs, vfa, alkalinity, ammonia_nitrogen, cod, 
+    entry_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from anaerobic_tank
+    where anaerobic_tank_id = #{anaerobicTankId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from anaerobic_tank
+    where anaerobic_tank_id = #{anaerobicTankId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tianren.bean.AnaerobicTank" >
+    insert into anaerobic_tank (anaerobic_tank_id, equipment_id, ph, 
+      ts, vs, vfa, alkalinity, 
+      ammonia_nitrogen, cod, entry_time
+      )
+    values (#{anaerobicTankId,jdbcType=INTEGER}, #{equipmentId,jdbcType=INTEGER}, #{ph,jdbcType=DOUBLE}, 
+      #{ts,jdbcType=DOUBLE}, #{vs,jdbcType=DOUBLE}, #{vfa,jdbcType=DOUBLE}, #{alkalinity,jdbcType=DOUBLE}, 
+      #{ammoniaNitrogen,jdbcType=DOUBLE}, #{cod,jdbcType=DOUBLE}, #{entryTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tianren.bean.AnaerobicTank" >
+    insert into anaerobic_tank
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="anaerobicTankId != null" >
+        anaerobic_tank_id,
+      </if>
+      <if test="equipmentId != null" >
+        equipment_id,
+      </if>
+      <if test="ph != null" >
+        ph,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+      <if test="vs != null" >
+        vs,
+      </if>
+      <if test="vfa != null" >
+        vfa,
+      </if>
+      <if test="alkalinity != null" >
+        alkalinity,
+      </if>
+      <if test="ammoniaNitrogen != null" >
+        ammonia_nitrogen,
+      </if>
+      <if test="cod != null" >
+        cod,
+      </if>
+      <if test="entryTime != null" >
+        entry_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="anaerobicTankId != null" >
+        #{anaerobicTankId,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentId != null" >
+        #{equipmentId,jdbcType=INTEGER},
+      </if>
+      <if test="ph != null" >
+        #{ph,jdbcType=DOUBLE},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=DOUBLE},
+      </if>
+      <if test="vs != null" >
+        #{vs,jdbcType=DOUBLE},
+      </if>
+      <if test="vfa != null" >
+        #{vfa,jdbcType=DOUBLE},
+      </if>
+      <if test="alkalinity != null" >
+        #{alkalinity,jdbcType=DOUBLE},
+      </if>
+      <if test="ammoniaNitrogen != null" >
+        #{ammoniaNitrogen,jdbcType=DOUBLE},
+      </if>
+      <if test="cod != null" >
+        #{cod,jdbcType=DOUBLE},
+      </if>
+      <if test="entryTime != null" >
+        #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tianren.bean.AnaerobicTank" >
+    update anaerobic_tank
+    <set >
+      <if test="equipmentId != null" >
+        equipment_id = #{equipmentId,jdbcType=INTEGER},
+      </if>
+      <if test="ph != null" >
+        ph = #{ph,jdbcType=DOUBLE},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=DOUBLE},
+      </if>
+      <if test="vs != null" >
+        vs = #{vs,jdbcType=DOUBLE},
+      </if>
+      <if test="vfa != null" >
+        vfa = #{vfa,jdbcType=DOUBLE},
+      </if>
+      <if test="alkalinity != null" >
+        alkalinity = #{alkalinity,jdbcType=DOUBLE},
+      </if>
+      <if test="ammoniaNitrogen != null" >
+        ammonia_nitrogen = #{ammoniaNitrogen,jdbcType=DOUBLE},
+      </if>
+      <if test="cod != null" >
+        cod = #{cod,jdbcType=DOUBLE},
+      </if>
+      <if test="entryTime != null" >
+        entry_time = #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where anaerobic_tank_id = #{anaerobicTankId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tianren.bean.AnaerobicTank" >
+    update anaerobic_tank
+    set equipment_id = #{equipmentId,jdbcType=INTEGER},
+      ph = #{ph,jdbcType=DOUBLE},
+      ts = #{ts,jdbcType=DOUBLE},
+      vs = #{vs,jdbcType=DOUBLE},
+      vfa = #{vfa,jdbcType=DOUBLE},
+      alkalinity = #{alkalinity,jdbcType=DOUBLE},
+      ammonia_nitrogen = #{ammoniaNitrogen,jdbcType=DOUBLE},
+      cod = #{cod,jdbcType=DOUBLE},
+      entry_time = #{entryTime,jdbcType=TIMESTAMP}
+    where anaerobic_tank_id = #{anaerobicTankId,jdbcType=INTEGER}
+  </update>
+</mapper>

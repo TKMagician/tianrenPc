@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <!-- Bootstrap 3.3.7 -->
+    <link href="../../plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link href="../../plugins/Ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="../../plugins/adminLTE/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="../../plugins/adminLTE/dist/css/skins/all-skins.min.css" rel="stylesheet" />
+    <!-- Morris chart -->
+    <!-- jvectormap -->
+    <link href="../../plugins/jvectormap/jquery-jvectormap.css" rel="stylesheet" />
+    <!-- Date Picker -->
+    <link href="../../plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <!-- Daterange picker -->
+    <link href="../../plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
+    <link href="../../plugins/adminLTE/dist/css/gasTank.css" rel="stylesheet" />
+</head>
+<body class="hold-transition skin-blue sidebar-mini" style="background-color:#ecf0f5">
+    <section class="content container-fluid">
+        <div class="row">
+        <div class="box-body">
+            <div class="alert alert-danger alert-dismissible" style="margin: 0;padding-top: 10px;padding-bottom: 10px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <span><b><i class="icon fa fa-ban"></i> 警告!</b></span> &nbsp;&nbsp;&nbsp;&nbsp;制浆机转速过快
+            </div>
+        </div>
+        </div>
+        <div class="row">
+            <!--气柜显示模型图-->
+            <div class="col-md-5">
+                <!-- /.info-box -->
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">智能气柜</h3>
+                        <div class="box-tools">
+                            <select class="form-control">
+                                <option selected="selected">福州餐厨项目#1</option>
+                                <option>气柜#2</option>
+                                <option>气柜#3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <img src="../../dist/images/gasTank.png" class="col-md-7" alt="">
+                            <!-- /.col -->
+                            <div class="col-md-5">
+                                <ul class="nav nav-pills nav-stacked changeChart">
+                                    <li>
+                                        <a href="#">设计容量<span class="pull-right"> 2000m <sup>3</sup></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="gasStorage">当前储气 <span class="pull-right text-green"> 1000m<sup>3</sup></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="intimalHeight">内膜高度 <span class="pull-right text-green"> 10m</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="endometrialPressure">内膜压力<span class="pull-right text-red"> 0.2kPa</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">运行状态<span class="pull-right text-red"> 异常</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6 methaneConc">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-red"><i class="fa fa-caret-up"></i> 60vol%</span>
+                                    <h5 class="description-text">CH<sub>4</sub>浓度</h5>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-xs-6 oxygenConc">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-yellow">
+                                        <i class="fa fa-caret-left"></i> 30vol%
+                                    </span>
+                                    <h5 class="description-text">O<sub>2</sub>浓度</h5>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-xs-6 hydrogenSulfideConc">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-red">
+                                        <i class="fa fa-caret-up"></i> 2000ppm
+                                    </span>
+                                    <h5 class="description-text">H<sub>2</sub>S浓度</h5>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-xs-6 carbonDioxideConc">
+                                <div class="description-block">
+                                    <span class="description-percentage text-green">
+                                        <i class="fa fa-caret-down"></i> 5vol%
+                                    </span>
+                                    <h5 class="description-text">CO<sub>2</sub>浓度</h5>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                        </div>
+                        <div class="footerBox" style="margin-top: 20px;">
+                            <a href="../../pages/mypage/气柜保存页面.html"class="btn btn-sm btn-default btn-flat pull-left ">详细数据列表</a>
+                            <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                        </div>
+                    </div>
+                    <!-- /.footer -->
+                </div>
+                <!-- /.box -->
+
+            </div>
+            <!--数据统计图-->
+            <div class="col-md-7">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">智能功能</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                                数据统计
+                            </button>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                                智能安防
+                            </button>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                                智能抗灾
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div id="showChar" style="width: 100%;height: 378px;"></div>
+                    </div>
+                    <!-- /.box-body -->
+                    <!--<div class="box-footer clearfix">-->
+                        <!--<a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-left">详细数据列表</a>-->
+                        <!--<span class="btn pull-right">数据日期：2018-08-12 22:33</span>-->
+                    <!--</div>-->
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- /.info-box -->
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">智能气柜</h3>
+                        <div class="box-tools">
+                            <select class="form-control">
+                                <option selected="selected">福州餐厨项目#1</option>
+                                <option>气柜#2</option>
+                                <option>气柜#3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div id="showReport" style="width: 100%;height: 378px;"></div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                    </div>
+                    <!-- /.footer -->
+                </div>
+                <!-- /.box -->
+
+            </div>
+        </div>
+    </section>
+    <script src="../../plugins/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+  $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--日历插件-->
+    <script src="../../plugins/moment/moment.js"></script>
+    <script src="../../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script src="../../plugins/chart/echarts.js"></script>
+    <script src="../../plugins/chart/echarsGL.js"></script>
+    <script src="../../dist/demo/gasTank.js?v=1.0.3"></script>
+
+</body>
+</html>

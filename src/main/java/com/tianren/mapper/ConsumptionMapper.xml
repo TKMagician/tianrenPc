@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tianren.dao.ConsumptionMapper" >
+  <resultMap id="BaseResultMap" type="com.tianren.bean.Consumption" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="entry_type" property="entryType" jdbcType="INTEGER" />
+    <result column="water_consumption" property="waterConsumption" jdbcType="DOUBLE" />
+    <result column="power_consumption" property="powerConsumption" jdbcType="DOUBLE" />
+    <result column="air_consumption" property="airConsumption" jdbcType="DOUBLE" />
+    <result column="entry_time" property="entryTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, entry_type, water_consumption, power_consumption, air_consumption, entry_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from consumption
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from consumption
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tianren.bean.Consumption" >
+    insert into consumption (id, entry_type, water_consumption, 
+      power_consumption, air_consumption, entry_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{entryType,jdbcType=INTEGER}, #{waterConsumption,jdbcType=DOUBLE}, 
+      #{powerConsumption,jdbcType=DOUBLE}, #{airConsumption,jdbcType=DOUBLE}, #{entryTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tianren.bean.Consumption" >
+    insert into consumption
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="entryType != null" >
+        entry_type,
+      </if>
+      <if test="waterConsumption != null" >
+        water_consumption,
+      </if>
+      <if test="powerConsumption != null" >
+        power_consumption,
+      </if>
+      <if test="airConsumption != null" >
+        air_consumption,
+      </if>
+      <if test="entryTime != null" >
+        entry_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="entryType != null" >
+        #{entryType,jdbcType=INTEGER},
+      </if>
+      <if test="waterConsumption != null" >
+        #{waterConsumption,jdbcType=DOUBLE},
+      </if>
+      <if test="powerConsumption != null" >
+        #{powerConsumption,jdbcType=DOUBLE},
+      </if>
+      <if test="airConsumption != null" >
+        #{airConsumption,jdbcType=DOUBLE},
+      </if>
+      <if test="entryTime != null" >
+        #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tianren.bean.Consumption" >
+    update consumption
+    <set >
+      <if test="entryType != null" >
+        entry_type = #{entryType,jdbcType=INTEGER},
+      </if>
+      <if test="waterConsumption != null" >
+        water_consumption = #{waterConsumption,jdbcType=DOUBLE},
+      </if>
+      <if test="powerConsumption != null" >
+        power_consumption = #{powerConsumption,jdbcType=DOUBLE},
+      </if>
+      <if test="airConsumption != null" >
+        air_consumption = #{airConsumption,jdbcType=DOUBLE},
+      </if>
+      <if test="entryTime != null" >
+        entry_time = #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tianren.bean.Consumption" >
+    update consumption
+    set entry_type = #{entryType,jdbcType=INTEGER},
+      water_consumption = #{waterConsumption,jdbcType=DOUBLE},
+      power_consumption = #{powerConsumption,jdbcType=DOUBLE},
+      air_consumption = #{airConsumption,jdbcType=DOUBLE},
+      entry_time = #{entryTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

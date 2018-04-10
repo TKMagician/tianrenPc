@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <!-- Bootstrap 3.3.7 -->
+    <link href="../../plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link href="../../plugins/Ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="../../plugins/adminLTE/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="../../plugins/adminLTE/dist/css/skins/all-skins.min.css" rel="stylesheet" />
+    <!-- Morris chart -->
+    <!-- jvectormap -->
+    <link href="../../plugins/jvectormap/jquery-jvectormap.css" rel="stylesheet" />
+    <!-- Date Picker -->
+    <link href="../../plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <!-- Daterange picker -->
+    <link href="../../plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
+    <link href="../../plugins/adminLTE/dist/css/gasTank.css" rel="stylesheet" />
+</head>
+<body class="hold-transition skin-blue sidebar-mini" style="background-color:#ecf0f5">
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="box-body">
+                <div class="alert alert-danger alert-dismissible" style="margin: 0;padding-top: 10px;padding-bottom: 10px;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <span><b><i class="icon fa fa-ban"></i> 警告!</b></span> &nbsp;&nbsp;&nbsp;&nbsp;制浆机转速过快
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--气柜显示模型图-->
+            <div class="col-md-5">
+                <!-- /.info-box -->
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                            <select class="" style="border: none">
+                                <option selected="selected">福州餐厨项目#1</option>
+                                <option>福州餐厨项目#2</option>
+                                <option>福州餐厨项目#3</option>
+                            </select>
+                        </h3>
+                        <div class="box-tools">
+                            <button type="button" class="btn btn-box-tool"><i class=""></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <img src="../../dist/images/gasTank.png" class="col-md-7" alt="">
+                            <!-- /.col -->
+                            <div class="col-md-5">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li>
+                                        <a href="#">PH<span class="pull-right"> 7.60 </span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">TS <span class="pull-right text-green"> 2.85mg/L</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">VS <span class="pull-right text-green"> 54.84%</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">VFA<span class="pull-right text-red"> 3341.17mg/L</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">碱度<span class="pull-right text-yellow"> 1434.12mg/L</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">氨氮<span class="pull-right text-red"> 3212mg/L</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">COD<span class="pull-right text-red"> 20211mg/L</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <div class="footerBox" style="margin-top: 20px;">
+                            <a href="../../pages/mypage/气柜保存页面.html"class="btn btn-sm btn-default btn-flat pull-left ">详细数据列表</a>
+                            <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                        </div>
+                    </div>
+                    <!-- /.footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!--数据统计图-->
+            <div class="col-md-7">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">智能功能</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                                智能诊断
+                            </button>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                                搅拌周期
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- /.info-box -->
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">数据报表</h3>
+                        <div class="box-tools">
+                            <select class="form-control">
+                                <option selected="selected">福州餐厨项目#1</option>
+                                <option>气柜#2</option>
+                                <option>气柜#3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                    </div>
+                    <!-- /.footer -->
+                </div>
+                <!-- /.box -->
+
+            </div>
+        </div>
+    </section>
+    <script src="../../plugins/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+  $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--日历插件-->
+    <script src="../../plugins/moment/moment.js"></script>
+    <script src="../../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script src="../../plugins/chart/echarts.js"></script>
+    <script src="../../plugins/chart/echarsGL.js"></script>
+    <script src="../../dist/demo/echartDemo.js"></script>
+
+</body>
+</html>
