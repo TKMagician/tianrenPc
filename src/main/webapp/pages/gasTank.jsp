@@ -146,7 +146,7 @@
                             </div>
                             <div class="footerBox" style="margin-top: 20px;">
                                 <a href="../../pages/mypage/气柜保存页面.html"class="btn btn-sm btn-default btn-flat pull-left ">详细数据列表</a>
-                                <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                                <span class="btn pull-right">数据日期：${realTimeData['addFromatTime']}</span>
                             </div>
                         </div>
                     </div>
