@@ -262,7 +262,7 @@ function showInitChart() {
     // 气柜3D柱状图
     option = {
         title: {
-            text: 'VFA-ALK稳定指数图'
+            text: '稳定指数图'
         },
         tooltip: {
             trigger: 'axis'

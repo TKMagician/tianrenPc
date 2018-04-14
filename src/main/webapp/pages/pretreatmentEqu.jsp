@@ -54,30 +54,25 @@
                             <table id="equitment" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>编号</th>
-                                    <th>自动</th>
-                                    <th>开运行</th>
-                                    <th>关运行</th>
-                                    <th>开到位</th>
-                                    <th>关到位</th>
-                                    <th>故障</th>
-                                    <th>开门</th>
-                                    <th>关门</th>
+                                    <c:forEach items="${dataConfig['pretreatmentEqu']}" var="configs">
+                                        <th>${sensors[configs].nickName}</th>
+                                    </c:forEach>
                                     <th>时间</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>1</td>
-                                        <td>开</td>
-                                        <td>开</td>
-                                        <td>开</td>
-                                        <td>开</td>
-                                        <td>开</td>
-                                        <td>开</td>
-                                        <td>开</td>
-                                        <td>开</td>
-                                        <td>2018-04-15 22:44:55</td>
+                                        <c:forEach items="${dataConfig['pretreatmentEqu']}" var="configs">
+                                            <c:choose>
+                                                <c:when test="${realTimeData[configs] == 0}">
+                                                    <td>关</td>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <td>开</td>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                        <td><fmt:formatDate  value="${realTimeData['addTime']}" type="both" pattern="yyyy/MM/dd HH:mm:ss" /><br/>  </td>
                                     </tr>
                                 </tbody>
                             </table>

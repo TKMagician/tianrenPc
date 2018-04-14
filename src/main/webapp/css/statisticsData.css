@@ -1,4 +1,8 @@
-.report {
+.benefitReport {
     height: 250px;
+    border-left: 1px solid #DDDDDD;
+}
+.expenditureReport {
+    height: 350px;
     border-left: 1px solid #DDDDDD;
 }

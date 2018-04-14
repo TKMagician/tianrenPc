@@ -71,146 +71,41 @@
                                             <thead>
                                             <tr>
                                                 <th>数据名称</th>
-                                                <th>等级</th>
                                                 <th>状态</th>
                                                 <th>当前值</th>
                                                 <th>最佳区间</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="pages/examples/invoice.html">出口净化气CO<sub>2</sub>浓度</a>
-                                                </td>
-                                                <td>核心</td>
-                                                <td><span class="label label-success">正常</span></td>
-                                                <td><span class="label label-success">35%</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#00a65a" data-height="20">35% - 41%</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="pages/examples/invoice.html">吸收塔循环液温度</a>
-                                                </td>
-                                                <td>I级</td>
-                                                <td><span class="label label-success">正常</span></td>
-                                                <td><span class="label label-success">50℃</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f39c12" data-height="20">50℃ - 51℃</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="pages/examples/invoice.html">再生塔循环液温度</a>
-                                                </td>
-                                                <td>I级</td>
-                                                <td><span class="label label-success">正常</span></td>
-                                                <td><span class="label label-success">100℃</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f39c12" data-height="20">98℃ - 102℃</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="pages/examples/invoice.html">蒸汽温度</a>
-                                                </td>
-                                                <td>I级</td>
-                                                <td><span class="label label-success">正常</span></td>
-                                                <td><span class="label label-success">150℃</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f39c12" data-height="20">140℃ - 170℃</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="pages/examples/invoice.html">净化气温度</a>
-                                                </td>
-                                                <td>I级</td>
-                                                <td><span class="label label-success">正常</span></td>
-                                                <td><span class="label label-success">40℃</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f39c12" data-height="20">35℃ - 45℃</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="pages/examples/invoice.html">沼气流量</a>
-                                                </td>
-                                                <td>I级</td>
-                                                <td><span class="label label-danger">报警</span></td>
-                                                <td><span class="label label-danger">120%m<sup>3</sup>/h</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                        60%m<sup>3</sup>/h</span> - 105%m<sup>3</sup>/h</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="pages/examples/invoice.html">吸收塔塔顶压力</a>
-                                                </td>
-                                                <td>II级</td>
-                                                <td><span class="label label-danger">报警</span></td>
-                                                <td><span class="label label-danger">1kPa</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                        3kPa - 10kPa
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="pages/examples/invoice.html">再生塔塔顶压力</a>
-                                                </td>
-                                                <td>II级</td>
-                                                <td><span class="label label-success">正常</span></td>
-                                                <td><span class="label label-success">17kPa</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                        13kPa - 20kPa
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="pages/examples/invoice.html">循环液流量</a>
-                                                </td>
-                                                <td>I级</td>
-                                                <td><span class="label label-success">正常</span></td>
-                                                <td><span class="label label-success">80%m<sup>3</sup>/h</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                        80%m<sup>3</sup>/h</span> - 100%m<sup>3</sup>/h</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="pages/examples/invoice.html">再生塔液位</a>
-                                                </td>
-                                                <td>II级</td>
-                                                <td><span class="label label-warning">低值</span></td>
-                                                <td><span class="label label-warning">1m</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                        1m - 2m</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="pages/examples/invoice.html">吸收塔塔内液位</a>
-                                                </td>
-                                                <td>I级</td>
-                                                <td><span class="label label-warning">高值</span></td>
-                                                <td><span class="label label-warning">2.3m</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                        1m - 2m</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                <c:forEach items="${dataConfig['decarburization']}" var="configs">
+                                                <tr>
+                                                    <td>
+                                                        <a href="pages/examples/invoice.html">${sensors[configs].nickName}</a>
+                                                    </td>
+                                                    <td>${sensors[configs].sensorDesc}</td>
+                                                    <c:choose>
+                                                        <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
+                                                            <td><span class="label label-success">正常</span></td>
+                                                            <td><span class="label label-success">${realTimeData[configs]}</span></td>
+                                                        </c:when>
+                                                        <c:when
+                                                                test="${realTimeData[configs] > sensors[configs].highErrorValue
+                                                                && realTimeData[configs] < sensors[configs].lowErrorValue}">
+                                                            <td><span class="label label-danger">报警</span></td>
+                                                            <td><span class="label label-danger">${realTimeData[configs]}</span></td>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <td><span class="label label-warning">警告</span></td>
+                                                            <td><span class="label label-warning">${realTimeData[configs]}</span></td>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <td>
+                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
+                                                                ${sensors[configs].suitableMinimum} - ${sensors[configs].suitableMaximum}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>

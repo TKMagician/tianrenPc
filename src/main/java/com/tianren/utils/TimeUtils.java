@@ -7,6 +7,7 @@ package com.tianren.utils;
  * Desc: 神兽保佑代码无bug
  */
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;

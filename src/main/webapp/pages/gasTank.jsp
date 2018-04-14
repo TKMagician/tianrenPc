@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -44,51 +43,85 @@
                     <!-- /.info-box -->
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">智能气柜</h3>
-                            <div class="box-tools">
-                                <select class="form-control">
-                                    <option selected="selected">福州餐厨项目#1</option>
-                                    <option>气柜#2</option>
-                                    <option>气柜#3</option>
-                                </select>
-                            </div>
+                            <h3 class="box-title">湖州餐厨#1</h3>
                         </div>
                         <div class="box-body">
                             <div class="row">
                                 <img src="/images/gasTank.png" class="col-md-7" alt="">
                                 <div class="col-md-5">
                                     <ul class="nav nav-pills nav-stacked changeChart">
+                                        <c:forEach items="${dataConfig['gasTankNormal']}" var="configs">
+                                            <li>
+                                                <a href="#">
+                                                        ${sensors[configs].nickName}
+                                                    <c:choose>
+                                                        <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
+                                                            <span class="pull-right text-green">${realTimeData[configs]}vol%</span>
+                                                        </c:when>
+                                                        <c:when
+                                                                test="${realTimeData[configs] > sensors[configs].highErrorValue && realTimeData[configs] < sensors[configs].lowErrorValue}">
+                                                            <span class="pull-right text-red">${realTimeData[configs]}vol%</span>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <span class="pull-right text-yellow">${realTimeData[configs]}vol%</span>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                         <li>
-                                            <a href="#">设计容量<span class="pull-right"> 2000m <sup>3</sup></span></a>
+                                            <a href="#">设计容量<span class="pull-right"> ${gasTankRealTimeData.d35}m <sup>3</sup></span></a>
                                         </li>
+                                        <!--
                                         <li>
                                             <a href="#" class="gasStorage">当前储气 <span class="pull-right text-green"> 1000m<sup>3</sup></span></a>
                                         </li>
                                         <li>
-                                            <a href="#" class="intimalHeight">内膜高度 <span class="pull-right text-green"> 10m</span></a>
+                                            <a href="#" class="intimalHeight">内膜高度 <span class="pull-right text-green"> ${gasTankRealTimeData.d29}m</span></a>
                                         </li>
                                         <li>
-                                            <a href="#" class="endometrialPressure">内膜压力<span class="pull-right text-red"> 0.2kPa</span></a>
+                                            <a href="#" class="endometrialPressure">内膜压力<span class="pull-right text-red"> ${gasTankRealTimeData.d34}kPa</span></a>
                                         </li>
                                         <li>
                                             <a href="#">运行状态<span class="pull-right text-red"> 异常</span></a>
                                         </li>
+                                        -->
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="box-footer clearfix">
                             <div class="row">
-                                <div class="col-sm-3 col-xs-6 methaneConc">
+                                <c:forEach items="${dataConfig['gasTankGas']}" var="configs">
+                                    <div class="col-sm-3 col-xs-6">
+                                        <div class="description-block border-right">
+                                            <c:choose>
+                                                <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
+                                                    <span class="description-percentage text-green confirmBtn"><i class="fa fa-caret-down"></i>${realTimeData[configs]}</span>
+                                                </c:when>
+                                                <c:when
+                                                        test="${realTimeData[configs] > sensors[configs].highErrorValue && realTimeData[configs] < sensors[configs].lowErrorValue}">
+                                                    <span class="description-percentage text-red confirmBtn"><i class="fa fa-caret-up"></i>${realTimeData[configs]}</span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span class="description-percentage text-yellow confirmBtn"><i class="fa fa-caret-left"></i>${realTimeData[configs]}</span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <h5 class="description-text">${sensors[configs].nickName}浓度</h5>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                                <!--
+                                <div class="col-sm-3 col-xs-6">
                                     <div class="description-block border-right">
-                                        <span class="description-percentage text-red"><i class="fa fa-caret-up"></i> 60vol%</span>
+                                        <span class="description-percentage text-red"><i class="fa fa-caret-up"></i> ${gasTankRealTimeData.d31}vol%</span>
                                         <h5 class="description-text">CH<sub>4</sub>浓度</h5>
                                     </div>
                                 </div>
                                 <div class="col-sm-3 col-xs-6 oxygenConc">
                                     <div class="description-block border-right">
                                     <span class="description-percentage text-yellow">
-                                        <i class="fa fa-caret-left"></i> 30vol%
+                                        <i class="fa fa-caret-left"></i> ${gasTankRealTimeData.d32}vol%
                                     </span>
                                         <h5 class="description-text">O<sub>2</sub>浓度</h5>
                                     </div>
@@ -96,7 +129,7 @@
                                 <div class="col-sm-3 col-xs-6 hydrogenSulfideConc">
                                     <div class="description-block border-right">
                                     <span class="description-percentage text-red">
-                                        <i class="fa fa-caret-up"></i> 2000ppm
+                                        <i class="fa fa-caret-up"></i> ${gasTankRealTimeData.d33}ppm
                                     </span>
                                         <h5 class="description-text">H<sub>2</sub>S浓度</h5>
                                     </div>
@@ -104,11 +137,12 @@
                                 <div class="col-sm-3 col-xs-6 carbonDioxideConc">
                                     <div class="description-block">
                                     <span class="description-percentage text-green">
-                                        <i class="fa fa-caret-down"></i> 5vol%
+                                        <i class="fa fa-caret-down"></i> ${gasTankRealTimeData.d34}vol%
                                     </span>
                                         <h5 class="description-text">CO<sub>2</sub>浓度</h5>
                                     </div>
                                 </div>
+                                -->
                             </div>
                             <div class="footerBox" style="margin-top: 20px;">
                                 <a href="../../pages/mypage/气柜保存页面.html"class="btn btn-sm btn-default btn-flat pull-left ">详细数据列表</a>
@@ -127,49 +161,68 @@
                                     数据统计
                                 </button>
                                 <button type="button" class="btn btn-default security" data-toggle="modal" data-target="#modal-default">
-                                    智能安防
-                                </button>
-                                <button type="button" class="btn btn-default disasterResistance" data-toggle="modal" data-target="#modal-default">
-                                    智能抗灾
+                                    效益报告
                                 </button>
                             </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <div id="showStatistics" style="width: 100%;height: 378px;"></div>
-                            <div id="showSecurity" style="width: 100%;height: 345px;display: none">
-                                <div class="col-sm-8" style="height: 100%;">
-                                    <video width="100%"  height="300px" controls="controls">
-                                        <source src="/images/vid.mp4" type="video/mp4" />
-                                    </video>
+                            <div style="width: 100%;height: 378px;">
+                                <div class="input-group" style="width: 100%;height: 38px; ">
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control timePick" placeholder="请选择时间">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-info btn-flat confirmBtn">确认</button>
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="col-sm-4" style="border-left: 1px solid #F4F4F4">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-                                            <div class="text-yellow">
-                                                <i class="fa  fa-exclamation-triangle"></i><span style="font-weight: bold;">警告</span>
-                                                <span class="pull-right">处理量过大</span>
-                                            </div>
-                                            <span>2017-03-04 12:44:55</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="text-red">
-                                                <i class="fa fa-exclamation"></i><span style="font-weight: bold;">超高预警</span>
-                                                <span class="pull-right">甲烷浓度过高</span>
-                                            </div>
-                                            <span>2017-03-04 12:44:55</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="text-yellow">
-                                                <i class="fa  fa-exclamation-triangle"></i><span style="font-weight: bold;">警告</span>
-                                                <span class="pull-right">内膜压力小</span>
-                                            </div>
-                                            <span>2017-03-04 12:44:55</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <div id="showStatistics" style="width: 100%;height: 340px;"></div>
                             </div>
-                            <div id="showDisasterResistance" style="width: 100%;height: 345px;display: none">
+                            <div style="width: 100%;height: 378px;">
+                                <div class="input-group" style="width: 100%;height: 38px; ">
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control timePick" placeholder="请选择时间">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-info btn-flat confirmBtn">确认</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div id="showStatistics" style="width: 100%;height: 340px;"></div>
+                            </div>
+                            <!--
+                                <div id="showSecurity" style="width: 100%;height: 345px;display: none">
+                                    <div class="col-sm-8" style="height: 100%;">
+                                        <video width="100%"  height="300px" controls="controls">
+                                            <source src="/images/vid.mp4" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                    <div class="col-sm-4" style="border-left: 1px solid #F4F4F4">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <div class="text-yellow">
+                                                    <i class="fa  fa-exclamation-triangle"></i><span style="font-weight: bold;">警告</span>
+                                                    <span class="pull-right">处理量过大</span>
+                                                </div>
+                                                <span>2017-03-04 12:44:55</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="text-red">
+                                                    <i class="fa fa-exclamation"></i><span style="font-weight: bold;">超高预警</span>
+                                                    <span class="pull-right">甲烷浓度过高</span>
+                                                </div>
+                                                <span>2017-03-04 12:44:55</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="text-yellow">
+                                                    <i class="fa  fa-exclamation-triangle"></i><span style="font-weight: bold;">警告</span>
+                                                    <span class="pull-right">内膜压力小</span>
+                                                </div>
+                                                <span>2017-03-04 12:44:55</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="showDisasterResistance" style="width: 100%;height: 345px;display: none">
                                 <div class="col-sm-8" style="height: 100%;">
                                     <img width="100%" src="/images/wind.png"  height="300px"/>
                                 </div>
@@ -192,6 +245,7 @@
                                     </ul>
                                 </div>
                             </div>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -200,6 +254,6 @@
     </div>
 </div>
 <script src="/plugins/chart/echarts.js"></script>
-<script src="/js/gasTank.js"></script>
+<script src="/js/gasTank.js?v=0.0.3"></script>
 </body>
 </html>

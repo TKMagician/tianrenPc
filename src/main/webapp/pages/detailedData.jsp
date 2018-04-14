@@ -12,6 +12,7 @@
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,61 +118,81 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <a href="pages/examples/invoice.html">PH</a>
-                                        </td>
-                                        <td>检测反应物料PH状态</td>
-                                        <td><span class="label label-success">正常</span></td>
-                                        <td><span class="label label-success">7.2</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">6.8-7.2</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="pages/examples/invoice.html">VFA</a>
-                                        </td>
-                                        <td>掌握发酵核心过程</td>
-                                        <td><span class="label label-success">正常</span></td>
-                                        <td>—</td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20">—</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="pages/examples/invoice.html">罐体温度1</a>
-                                        </td>
-                                        <td>发酵温度测量</td>
-                                        <td><span class="label label-danger">报警</span></td>
-                                        <td><span class="label label-danger">93℃</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f56954" data-height="20">50℃-60℃</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="pages/examples/invoice.html">产气压力</a>
-                                        </td>
-                                        <td>产气压力检测</td>
-                                        <td><span class="label label-info">预警</span></td>
-                                        <td><span class="label label-info">90kPa</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00c0ef" data-height="20">80kPa-94kPa</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="pages/examples/invoice.html">罐体液位</a>
-                                        </td>
-                                        <td>罐体液位测量</td>
-                                        <td><span class="label label-success">正常</span></td>
-                                        <td><span class="label label-success">1m</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20">0.5m-3m</div>
-                                        </td>
-                                    </tr>
+                                        <c:forEach items="${dataConfig['anaerobicTank']}" var="configs">
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html">${sensors[configs].nickName}</a>
+                                            </td>
+                                            <td>${sensors[configs].sensorDesc}</td>
+                                            <c:choose>
+                                                <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
+                                                    <td><span class="label label-success">正常</span></td>
+                                                    <td><span class="label label-success">${realTimeData[configs]}</span></td>
+                                                </c:when>
+                                                <c:when
+                                                        test="${realTimeData[configs] > sensors[configs].highErrorValue
+                                                            && realTimeData[configs] < sensors[configs].lowErrorValue}">
+                                                    <td><span class="label label-danger">报警</span></td>
+                                                    <td><span class="label label-danger">${realTimeData[configs]}</span></td>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <td><span class="label label-warning">警告</span></td>
+                                                    <td><span class="label label-warning">${realTimeData[configs]}</span></td>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <td>
+                                                <div class="sparkbar" data-color="#00a65a" data-height="20">
+                                                        ${sensors[configs].suitableMinimum} - ${sensors[configs].suitableMaximum}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                        <!--
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html">VFA</a>
+                                            </td>
+                                            <td>掌握发酵核心过程</td>
+                                            <td><span class="label label-success">正常</span></td>
+                                            <td>—</td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#f39c12" data-height="20">—</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html">罐体温度1</a>
+                                            </td>
+                                            <td>发酵温度测量</td>
+                                            <td><span class="label label-danger">报警</span></td>
+                                            <td><span class="label label-danger">93℃</span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#f56954" data-height="20">50℃-60℃</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html">产气压力</a>
+                                            </td>
+                                            <td>产气压力检测</td>
+                                            <td><span class="label label-info">预警</span></td>
+                                            <td><span class="label label-info">90kPa</span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#00c0ef" data-height="20">80kPa-94kPa</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html">罐体液位</a>
+                                            </td>
+                                            <td>罐体液位测量</td>
+                                            <td><span class="label label-success">正常</span></td>
+                                            <td><span class="label label-success">1m</span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#f39c12" data-height="20">0.5m-3m</div>
+                                            </td>
+                                        </tr>
+                                        -->
                                     </tbody>
                                 </table>
                             </div>
@@ -180,7 +201,7 @@
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-left">详细数据列表</a>
-                            <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                            <span class="btn pull-right">数据日期：${realTimeData['addFromatTime']}</span>
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -201,18 +222,25 @@
                                 <div class="col-md-7" id="gasTankPie" style="height: 220px"></div>
                                 <div class="col-md-5">
                                     <ul class="nav nav-pills nav-stacked changeChart">
-                                        <li>
-                                            <a href="#">CH<sub>4</sub>浓度<span class="pull-right"> 60vol%</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="gasStorage">O<sub>2</sub>浓度 <span class="pull-right text-green"> 30vol%</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="intimalHeight">H<sub>2</sub>S浓度 <span class="pull-right text-green"> 2000ppm</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="endometrialPressure">CO<sub>2</sub>浓度<span class="pull-right text-red"> 5vol%</span></a>
-                                        </li>
+                                        <c:forEach items="${dataConfig['gasTank']}" var="configs">
+                                            <li>
+                                                <a href="#">
+                                                    ${sensors[configs].nickName}
+                                                    <c:choose>
+                                                        <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
+                                                            <span class="pull-right text-green">${realTimeData[configs]}vol%</span>
+                                                        </c:when>
+                                                        <c:when
+                                                                test="${realTimeData[configs] > sensors[configs].highErrorValue && realTimeData[configs] < sensors[configs].lowErrorValue}">
+                                                            <td><span class="pull-right text-red">${realTimeData[configs]}vol%</span></td>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <td><span class="pull-right text-yellow">${realTimeData[configs]}vol%</span></td>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
@@ -220,7 +248,7 @@
                         <div class="box-footer clearfix">
                             <div class="footerBox">
                                 <a href="../../pages/mypage/气柜保存页面.html"class="btn btn-sm btn-default btn-flat pull-left ">详细数据列表</a>
-                                <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                                <span class="btn pull-right">数据日期：${realTimeData['addFromatTime']}</span>
                             </div>
                         </div>
                     </div>
@@ -246,48 +274,40 @@
                                     <thead>
                                     <tr>
                                         <th>数据名称</th>
-                                        <th>等级</th>
                                         <th>状态</th>
                                         <th>当前值</th>
                                         <th>最佳区间</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <a href="pages/examples/invoice.html">出口净化气H2S浓度</a>
-                                        </td>
-                                        <td>核心</td>
-                                        <td><span class="label label-success">正常</span></td>
-                                        <td><span class="label label-success">40ppm</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">10ppm - 50ppm</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="pages/examples/invoice.html">循环液温度</a>
-                                        </td>
-                                        <td>I级</td>
-                                        <td><span class="label label-success">正常</span></td>
-                                        <td><span class="label label-success">25℃</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20">25℃ - 35℃</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="pages/examples/invoice.html">沼气流量</a>
-                                        </td>
-                                        <td>I级</td>
-                                        <td><span class="label label-danger">报警</span></td>
-                                        <td><span class="label label-danger">120%m<sup>3</sup>/h</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                60%m<sup>3</sup>/h</span> - 105%m<sup>3</sup>/h</span>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <c:forEach items="${dataConfig['decarburization']}" var="configs">
+                                            <tr>
+                                                <td>
+                                                    <a href="pages/examples/invoice.html">${sensors[configs].nickName}</a>
+                                                </td>
+                                                <c:choose>
+                                                    <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
+                                                        <td><span class="label label-success">正常</span></td>
+                                                        <td><span class="label label-success">${realTimeData[configs]}</span></td>
+                                                    </c:when>
+                                                    <c:when
+                                                            test="${realTimeData[configs] > sensors[configs].highErrorValue
+                                                                && realTimeData[configs] < sensors[configs].lowErrorValue}">
+                                                        <td><span class="label label-danger">报警</span></td>
+                                                        <td><span class="label label-danger">${realTimeData[configs]}</span></td>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <td><span class="label label-warning">警告</span></td>
+                                                        <td><span class="label label-warning">${realTimeData[configs]}</span></td>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20">
+                                                            ${sensors[configs].suitableMinimum} - ${sensors[configs].suitableMaximum}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -296,7 +316,7 @@
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-left">详细数据列表</a>
-                            <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                            <span class="btn pull-right">数据日期：${realTimeData['addFromatTime']}</span>
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -320,48 +340,40 @@
                                     <thead>
                                     <tr>
                                         <th>数据名称</th>
-                                        <th>等级</th>
                                         <th>状态</th>
                                         <th>当前值</th>
                                         <th>最佳区间</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <a href="pages/examples/invoice.html">出口净化气二氧化碳浓度</a>
-                                        </td>
-                                        <td>核心</td>
-                                        <td><span class="label label-success">正常</span></td>
-                                        <td><span class="label label-success">40%</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">30% - 40%</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="pages/examples/invoice.html">吸收塔循环液温度</a>
-                                        </td>
-                                        <td>I级</td>
-                                        <td><span class="label label-success">正常</span></td>
-                                        <td><span class="label label-success">50℃</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20">50℃ - 51℃</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="pages/examples/invoice.html">沼气流量</a>
-                                        </td>
-                                        <td>I级</td>
-                                        <td><span class="label label-danger">报警</span></td>
-                                        <td><span class="label label-danger">120%m<sup>3</sup>/h</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                60%m<sup>3</sup>/h</span> - 105%m<sup>3</sup>/h</span>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <c:forEach items="${dataConfig['decarburization']}" var="configs">
+                                        <tr>
+                                            <td>
+                                                <a href="pages/examples/invoice.html">${sensors[configs].nickName}</a>
+                                            </td>
+                                            <c:choose>
+                                                <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
+                                                    <td><span class="label label-success">正常</span></td>
+                                                    <td><span class="label label-success">${realTimeData[configs]}</span></td>
+                                                </c:when>
+                                                <c:when
+                                                        test="${realTimeData[configs] > sensors[configs].highErrorValue
+                                                                && realTimeData[configs] < sensors[configs].lowErrorValue}">
+                                                    <td><span class="label label-danger">报警</span></td>
+                                                    <td><span class="label label-danger">${realTimeData[configs]}</span></td>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <td><span class="label label-warning">警告</span></td>
+                                                    <td><span class="label label-warning">${realTimeData[configs]}</span></td>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <td>
+                                                <div class="sparkbar" data-color="#00a65a" data-height="20">
+                                                        ${sensors[configs].suitableMinimum} - ${sensors[configs].suitableMaximum}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -370,7 +382,7 @@
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-left">详细数据列表</a>
-                            <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                            <span class="btn pull-right">数据日期：${realTimeData['addFromatTime']}</span>
                         </div>
                         <!-- /.box-footer -->
                     </div>

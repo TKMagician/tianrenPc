@@ -62,27 +62,25 @@
                                 <!-- /.col -->
                                 <div class="col-md-5">
                                     <ul class="nav nav-pills nav-stacked">
-                                        <li>
-                                            <a href="#">PH<span class="pull-right"> 7.60 </span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ts">TS <span class="pull-right text-green"> 2.85mg/L</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="vs">VS <span class="pull-right text-green"> 54.84%</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="vfa">VFA<span class="pull-right text-red"> 3341.17mg/L</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#">碱度<span class="pull-right text-yellow"> 1434.12mg/L</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#">氨氮<span class="pull-right text-red"> 3212mg/L</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#">COD<span class="pull-right text-red"> 20211mg/L</span></a>
-                                        </li>
+                                        <c:forEach items="${dataConfig['anaerobicTank']}" var="configs">
+                                            <li>
+                                                <a href="#">
+                                                        ${sensors[configs].nickName}
+                                                    <c:choose>
+                                                        <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
+                                                            <span class="pull-right text-green">${realTimeData[configs]}vol%</span>
+                                                        </c:when>
+                                                        <c:when
+                                                                test="${realTimeData[configs] > sensors[configs].highErrorValue && realTimeData[configs] < sensors[configs].lowErrorValue}">
+                                                            <td><span class="pull-right text-red">${realTimeData[configs]}vol%</span></td>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <td><span class="pull-right text-yellow">${realTimeData[configs]}vol%</span></td>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                                 <!-- /.col -->
@@ -93,7 +91,7 @@
                         <div class="box-footer clearfix">
                             <div class="footerBox" style="margin-top: 20px;">
                                 <a href="../../pages/mypage/气柜保存页面.html"class="btn btn-sm btn-default btn-flat pull-left ">详细数据列表</a>
-                                <span class="btn pull-right">数据日期：2018-08-12 22:33</span>
+                                <span class="btn pull-right">数据日期：${realTimeData['addFromatTime']}</span>
                             </div>
                         </div>
                         <!-- /.footer -->

@@ -13,7 +13,9 @@
             <property name="suppressDate" value="true"/>
         </commentGenerator>
 
-        <!-- 数据库配置 -->
+        <!-- 数据库配置
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://47.104.202.212:3306/tianren" userId="root" password="tianren"/>
+         -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/tianren" userId="root" password="root"/>
 
         <javaTypeResolver>
@@ -41,7 +43,6 @@
 
         <!-- !!!! Table Configurations !!!! -->
         <!-- 数据表配置 -->
-        <table tableName="capacity" domainObjectName="Capacity" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="consumption" domainObjectName="Consumption" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="sensor_data" domainObjectName="SensorData" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>
 </generatorConfiguration>

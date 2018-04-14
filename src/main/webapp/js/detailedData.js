@@ -4,6 +4,7 @@ showInitChart();
 
 function showInitChart() {
     // 气柜3D柱状图
+    var dataMap = null;
 
     option = {
         tooltip : {

@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/bower_components/morris.js/morris.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap-daterangepicker/daterangepicker.css">
 <body class="hold-transition skin-blue sidebar-mini">
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -58,8 +61,8 @@
                             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/user/statisticsData"><i class="fa fa-circle-o"></i> 统计数据</a></li>
-                    <li><a href="/user/detailedData"><i class="fa fa-circle-o"></i> 当前数据</a></li>
+                    <li><a href="/pages/statisticsData.jsp"><i class="fa fa-circle-o"></i> 统计数据</a></li>
+                    <li><a href="/detailedData/getRealTimeData"><i class="fa fa-circle-o"></i> 当前数据</a></li>
                 </ul>
             </li>
             <!--收运-->
@@ -88,11 +91,11 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="/pages/pretreatmentEqu.jsp">
+                        <a href="/pretreatmentEqu/getRealTimeData">
                             <i class="fa fa-circle-o"></i> 设备及数据
                         </a>
                     </li>
-                    <li><a href="#" data-addtab="morris" data-target="#MasterTabs" data-title="处理记录" data-url="pages/charts/morris.html"><i class="fa fa-circle-o"></i> 处理记录</a></li>
+                    <li><a href="#" data-addtab="morris" data-target9+-="#MasterTabs" data-title="处理记录" data-url="pages/charts/morris.html"><i class="fa fa-circle-o"></i> 处理记录</a></li>
                 </ul>
             </li>
             <!--工艺-->
@@ -104,10 +107,10 @@
                             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class=""><a href="/pages/gasTank.jsp"><i class="fa fa-circle-o"></i> 智能气柜</a></li>
-                    <li><a href="/pages/anaerobicTank.jsp"><i class="fa fa-circle-o"></i> 智能厌氧反应罐</a></li>
-                    <li><a href="/pages/desulfurization.jsp"><i class="fa fa-circle-o"></i> 脱硫</a></li>
-                    <li><a href="/pages/decarburization.jsp"><i class="fa fa-circle-o"></i> 脱碳</a></li>
+                    <li class=""><a href="/gasTank/getRealTimeData"><i class="fa fa-circle-o"></i> 智能气柜</a></li>
+                    <li><a href="/anaerobicTank/getRealTimeData"><i class="fa fa-circle-o"></i> 智能厌氧反应罐</a></li>
+                    <li><a href="/desulfurization/getRealTimeData"><i class="fa fa-circle-o"></i> 脱硫</a></li>
+                    <li><a href="/decarburization/getRealTimeData"><i class="fa fa-circle-o"></i> 脱碳</a></li>
                 </ul>
             </li>
             <!--智慧能源-->
@@ -178,6 +181,9 @@
 <script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+<script src="/bower_components/moment/min/moment.min.js"></script>
+<script src="/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="/dist/js/adminlte.min.js"></script>
 <script src="/dist/js/pages/dashboard.js"></script>
 </body>
