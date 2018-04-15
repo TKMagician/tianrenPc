@@ -1,5 +1,6 @@
 var myChart = echarts.init(document.getElementById('leftShow'));
-
+var benefitChart = echarts.init(document.getElementById('benefitChart'));
+$('#showBenefit').hide();
 showInitChart();
 $('.ts').click(function () {
     var option = {
@@ -55,12 +56,12 @@ $('.ts').click(function () {
 });
 
 $('.diagnosis').click(function () {
-    changeBtn($(this));
-    showInitChart();
+    changeBtn($(this), $('#showData'));
+    // showInitChart();
 });
 
 $('.mixingCycle').click(function () {
-    clearBtn($(this));
+    changeBtn($(this), $('#showBenefit'));
     var getDayTime = function(){
         var temp = [];
         for(var i = 0;i < 24;i++){
@@ -73,10 +74,9 @@ $('.mixingCycle').click(function () {
     var getRandomData = function(){
         var temp = [];
         for(var i = 0;i < 24;i++){
-            var item = Math.random() * 100 - Math.random() * 50;
+            var item = 80 - Math.random() * 20;
             temp.push(Math.abs(item).toFixed(2));
         }
-
         return temp;
     }
 
@@ -162,7 +162,7 @@ $('.mixingCycle').click(function () {
                 fontSize: 14
             },
             min: 0,
-            max: 100,
+            max: 80,
             gridIndex: 0,
             splitLine: {
                 lineStyle: {
@@ -176,7 +176,7 @@ $('.mixingCycle').click(function () {
                 fontSize: 14
             },
             min: 0,
-            max: 100,
+            max: 40,
             gridIndex: 1,
             inverse: true,
             splitLine: {
@@ -189,6 +189,7 @@ $('.mixingCycle').click(function () {
             {
                 name:'搅拌速率',
                 type:'line',
+                step: 'start',
                 data: getRandomData()
             },
             {
@@ -196,17 +197,14 @@ $('.mixingCycle').click(function () {
                 type:'line',
                 xAxisIndex: 1,
                 yAxisIndex: 1,
-                data: getRandomData()
+                step: 'end',
+                data: [26, 26, 26, 26, 26, 26, 27, 27, 33, 33, 33, 33, 30, 30, 31, 31, 31, 36, 35, 34, 33, 30, 28, 27]
             }
         ]
     };
-    myChart.clear();
-    myChart.setOption(option);
+    benefitChart.setOption(option);
 });
 
-$('.statistics').click(function () {
-    clearBtn($(this));
-});
 
 $('.gasForecast').click(function () {
     clearBtn($(this));
@@ -257,7 +255,13 @@ function clearBtn(element) {
     // $('#leftShow').empty();
     // $('#rightShow').empty();
 }
-
+function changeBtn(element, showEle) {
+    $('.intelligent .btn').removeClass('btn-primary');
+    element.addClass('btn-primary');
+    $('#showData').hide();
+    $('#showBenefit').hide();
+    showEle.show();
+}
 function showInitChart() {
     // 气柜3D柱状图
     option = {
@@ -269,7 +273,7 @@ function showInitChart() {
         },
         xAxis: {
             type: 'category',
-            data: ['4/20', '4/21', '4/22', '4/23', '4/24', '4/25', '4/26']
+            data: ['4/7', '4/8', '4/9', '4/10', '4/11', '4/12', '4/13', '4/14', '4/15', '4/16']
         },
         yAxis: {
             type: 'value'
@@ -300,7 +304,7 @@ function showInitChart() {
             }
         },
         series: [{
-            data: [0.2, 0.3, 0.1, 0.8, 0.9, 0.4, 0.2],
+            data: [0.2, 0.3, 0.3, 0.35, 0.35, 0.4, 0.5, 0.4, 0.35, 0.3],
             type: 'line',
             smooth: true,
             markLine: {
@@ -316,7 +320,6 @@ function showInitChart() {
             }
         }]
     };
-
 
 // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);

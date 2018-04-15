@@ -44,7 +44,7 @@ public class DetailedDataController {
     @RequestMapping("/getChartData")
     public String entryCapacityData(HttpServletRequest request, HttpSession session) throws UnsupportedEncodingException {
         Result<Map<String, SensorData>> sensorDataRes =
-                commonService.getSensorDataByTime(request.getParameter("startTime"), request.getParameter("endTime"));
+                commonService.getSensorDataByNum(0, 1);
         if (!sensorDataRes.getResult()) {
             return null;//返回404--加在错误
         }

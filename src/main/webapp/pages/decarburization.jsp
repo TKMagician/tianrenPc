@@ -86,22 +86,22 @@
                                                     <c:choose>
                                                         <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
                                                             <td><span class="label label-success">正常</span></td>
-                                                            <td><span class="label label-success">${realTimeData[configs]}</span></td>
+                                                            <td><span class="label label-success">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                         </c:when>
                                                         <c:when
                                                                 test="${realTimeData[configs] > sensors[configs].highErrorValue
                                                                 && realTimeData[configs] < sensors[configs].lowErrorValue}">
                                                             <td><span class="label label-danger">报警</span></td>
-                                                            <td><span class="label label-danger">${realTimeData[configs]}</span></td>
+                                                            <td><span class="label label-danger">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                         </c:when>
                                                         <c:otherwise>
                                                             <td><span class="label label-warning">警告</span></td>
-                                                            <td><span class="label label-warning">${realTimeData[configs]}</span></td>
+                                                            <td><span class="label label-warning">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                         </c:otherwise>
                                                     </c:choose>
                                                     <td>
                                                         <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                ${sensors[configs].suitableMinimum} - ${sensors[configs].suitableMaximum}
+                                                                ${sensors[configs].suitableMinimum}${sensors[configs].sensorUnit} - ${sensors[configs].suitableMaximum}${sensors[configs].sensorUnit}
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -129,70 +129,68 @@
                                 <button type="button" class="btn btn-default btn-primary statistics" data-toggle="modal" data-target="#modal-default">
                                     数据统计
                                 </button>
-                                <button type="button" class="btn btn-default security" data-toggle="modal" data-target="#modal-default">
-                                    智能安防
-                                </button>
-                                <button type="button" class="btn btn-default disasterResistance" data-toggle="modal" data-target="#modal-default">
-                                    智能抗灾
+                                <button type="button" class="btn btn-default benefit" data-toggle="modal" data-target="#modal-default">
+                                    收益报告
                                 </button>
                             </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <div id="showStatistics" style="width: 100%;height: 378px;"></div>
-                            <div id="showSecurity" style="width: 100%;height: 345px;display: none">
-                                <div class="col-sm-8" style="height: 100%;">
-                                    <video width="100%"  height="300px" controls="controls">
-                                        <source src="/images/vid.mp4" type="video/mp4" />
-                                    </video>
-                                </div>
-                                <div class="col-sm-4" style="border-left: 1px solid #F4F4F4">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-                                            <div class="text-yellow">
-                                                <i class="fa  fa-exclamation-triangle"></i><span style="font-weight: bold;">警告</span>
-                                                <span class="pull-right">处理量过大</span>
-                                            </div>
-                                            <span>2017-03-04 12:44:55</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="text-red">
-                                                <i class="fa fa-exclamation"></i><span style="font-weight: bold;">超高预警</span>
-                                                <span class="pull-right">甲烷浓度过高</span>
-                                            </div>
-                                            <span>2017-03-04 12:44:55</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="text-yellow">
-                                                <i class="fa  fa-exclamation-triangle"></i><span style="font-weight: bold;">警告</span>
-                                                <span class="pull-right">内膜压力小</span>
-                                            </div>
-                                            <span>2017-03-04 12:44:55</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div id="showStatistics" style="width: 100%;height: 378px;">
+                                <div id="leftShow" style="height: 100%;width: 100%;"></div>
                             </div>
-                            <div id="showDisasterResistance" style="width: 100%;height: 345px;display: none">
-                                <div class="col-sm-8" style="height: 100%;">
-                                    <img width="100%" src="/images/wind.png"  height="300px"/>
-                                </div>
-                                <div class="col-sm-4" style="border-left: 1px solid #F4F4F4">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-                                            <div class="text-yellow" style="font-size: 25px;">
-                                                <i class="fa  fa-exclamation-triangle"></i><span style="font-weight: bold;">警告</span>
-                                            </div>
-                                            <p>台风还有72小时登录该地区</p>
-                                            <span>2017-03-04 12:44:55</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="text-green" style="font-size: 25px;">
-                                                <i class="fa  fa-strikethrough"></i><span style="font-weight: bold;">策略</span>
-                                            </div>
-                                            <p>请在56小时内耗光气罐气体，进行防护网遮罩</p>
-                                            <span>2017-03-04 12:44:55</span>
-                                        </li>
-                                    </ul>
+                            <div id="showBenefit" style="width: 100%;height: 378px;">
+                                <div class="col-sm-8" style="height: 100%;" id="benefitChart"></div>
+                                <div class="col-sm-4" style="border-left: 1px solid #D5E2F3;padding-left: 25px;">
+                                    <div class="row">
+                                        <p class="text-center">
+                                            <strong>今日收益报告</strong>
+                                        </p>
+                                        <ul class="products-list product-list-in-box">
+                                            <li class="item" style="border-bottom: 1px solid #D2D6DE;">
+                                                <div class="product-img">
+                                                    <img src="/images/操作_蒸汽.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        搅拌速度调节
+                                                        <span class="label label-warning pull-right">2000元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                        用电低峰加快处理速度，同比节省0.2W元
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="item" style="border-bottom: 1px solid #D2D6DE;">
+                                                <div class="product-img">
+                                                    <img src="/images/闪电.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        合理调节稳定指数
+                                                        <span class="label label-warning pull-right">100元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                        减少多人工查看，同比节省时间3H，节约成本100元
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <div class="product-img">
+                                                    <img src="/images/效益.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        总效益
+                                                        <span class="label label-warning pull-right">2100元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                        能耗节省0.2万元，人工成本节省100元
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -203,6 +201,6 @@
     </div>
 </div>
 <script src="/plugins/chart/echarts.js"></script>
-<script src="/js/decarburization.js"></script>
+<script src="/js/decarburization.js?v=0.0.1"></script>
 </body>
 </html>

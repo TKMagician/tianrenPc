@@ -30,16 +30,6 @@
     <jsp:include page="leftMenu.jsp" flush="true"></jsp:include>
     <div class="content-wrapper">
         <section class="content container-fluid">
-            <!--
-            <div class="row">
-                <div class="box-body">
-                    <div class="alert alert-danger alert-dismissible" style="margin: 0;padding-top: 10px;padding-bottom: 10px;">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <span><b><i class="icon fa fa-ban"></i> 警告!</b></span> &nbsp;&nbsp;&nbsp;&nbsp;气柜内膜压力过高
-                    </div>
-                </div>
-            </div>
-            -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-info">
@@ -86,22 +76,22 @@
                                                         <c:choose>
                                                             <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
                                                                 <td><span class="label label-success">正常</span></td>
-                                                                <td><span class="label label-success">${realTimeData[configs]}</span></td>
+                                                                <td><span class="label label-success">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                             </c:when>
                                                             <c:when
                                                                     test="${realTimeData[configs] > sensors[configs].highErrorValue
                                                                 && realTimeData[configs] < sensors[configs].lowErrorValue}">
                                                                 <td><span class="label label-danger">报警</span></td>
-                                                                <td><span class="label label-danger">${realTimeData[configs]}</span></td>
+                                                                <td><span class="label label-danger">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <td><span class="label label-warning">警告</span></td>
-                                                                <td><span class="label label-warning">${realTimeData[configs]}</span></td>
+                                                                <td><span class="label label-warning">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                             </c:otherwise>
                                                         </c:choose>
                                                         <td>
                                                             <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                    ${sensors[configs].suitableMinimum} - ${sensors[configs].suitableMaximum}
+                                                                    ${sensors[configs].suitableMinimum}${sensors[configs].sensorUnit} - ${sensors[configs].suitableMaximum}${sensors[configs].sensorUnit}
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -130,17 +120,75 @@
                                 <button type="button" class="btn btn-default btn-primary statistics" data-toggle="modal" data-target="#modal-default">
                                     数据统计
                                 </button>
-                                <button type="button" class="btn btn-default security" data-toggle="modal" data-target="#modal-default">
-                                    智能安防
+                                <button type="button" class="btn btn-default benefit" data-toggle="modal" data-target="#modal-default">
+                                    收益报告
                                 </button>
+                                <!--
                                 <button type="button" class="btn btn-default disasterResistance" data-toggle="modal" data-target="#modal-default">
                                     智能抗灾
                                 </button>
+                                -->
                             </div>
                         </div>
-                        <!-- /.box-header -->
                         <div class="box-body">
-                            <div id="showStatistics" style="width: 100%;height: 378px;"></div>
+                            <div id="showStatistics" style="width: 100%;height: 378px;">
+                                <div id="leftShow" style="height: 100%;width: 100%;"></div>
+                            </div>
+                            <div id="showBenefit" style="width: 100%;height: 378px;">
+                                <div class="col-sm-8" style="height: 100%;" id="benefitChart"></div>
+                                <div class="col-sm-4" style="border-left: 1px solid #D5E2F3;padding-left: 25px;">
+                                    <div class="row">
+                                        <p class="text-center">
+                                            <strong>今日收益报告</strong>
+                                        </p>
+                                        <ul class="products-list product-list-in-box">
+                                            <li class="item" style="border-bottom: 1px solid #D2D6DE;">
+                                                <div class="product-img">
+                                                    <img src="/images/操作_蒸汽.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        搅拌速度调节
+                                                        <span class="label label-warning pull-right">2000元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                        用电低峰加快处理速度，同比节省0.2W元
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="item" style="border-bottom: 1px solid #D2D6DE;">
+                                                <div class="product-img">
+                                                    <img src="/images/闪电.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        合理调节稳定指数
+                                                        <span class="label label-warning pull-right">100元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                        减少多人工查看，同比节省时间3H，节约成本100元
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <div class="product-img">
+                                                    <img src="/images/效益.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        总效益
+                                                        <span class="label label-warning pull-right">2100元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                        能耗节省0.2万元，人工成本节省100元
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--
                             <div id="showSecurity" style="width: 100%;height: 345px;display: none">
                                 <div class="col-sm-8" style="height: 100%;">
                                     <video width="100%"  height="300px" controls="controls">
@@ -196,6 +244,7 @@
                                     </ul>
                                 </div>
                             </div>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -204,6 +253,6 @@
     </div>
 </div>
 <script src="/plugins/chart/echarts.js"></script>
-<script src="/js/desulfurization.js"></script>
+<script src="/js/desulfurization.js?v=0.0.3"></script>
 </body>
 </html>

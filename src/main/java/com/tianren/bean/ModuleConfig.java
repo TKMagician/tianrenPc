@@ -85,16 +85,19 @@ public class ModuleConfig {
 
     public HashMap<String, List<String>> getPretreatmentEquConfig() {
         HashMap<String, List<String>> configHashMap = new HashMap<>();
-        List<String> config = new ArrayList<>();
-        config.add("d21");
-        config.add("d22");
-        config.add("d23");
-        config.add("d24");
-        config.add("d25");
-        config.add("d26");
-        config.add("d27");
-        config.add("d28");
-        configHashMap.put("pretreatmentEqu", config);
+        List<String> homogeneousPool = new ArrayList<>();
+        homogeneousPool.add("d21");
+        homogeneousPool.add("d22");
+        homogeneousPool.add("d23");
+
+        List<String> hydrolysisAcidification = new ArrayList<>();
+        hydrolysisAcidification.add("d24");
+        hydrolysisAcidification.add("d25");
+        hydrolysisAcidification.add("d26");
+        hydrolysisAcidification.add("d27");
+
+        configHashMap.put("homogeneousPool", homogeneousPool);
+        configHashMap.put("hydrolysisAcidification", hydrolysisAcidification);
         return configHashMap;
     }
 

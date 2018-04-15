@@ -68,14 +68,14 @@
                                                         ${sensors[configs].nickName}
                                                     <c:choose>
                                                         <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
-                                                            <span class="pull-right text-green">${realTimeData[configs]}vol%</span>
+                                                            <span class="pull-right text-green ts">${realTimeData[configs]}${sensors[configs].sensorUnit}</span>
                                                         </c:when>
                                                         <c:when
                                                                 test="${realTimeData[configs] > sensors[configs].highErrorValue && realTimeData[configs] < sensors[configs].lowErrorValue}">
-                                                            <td><span class="pull-right text-red">${realTimeData[configs]}vol%</span></td>
+                                                            <td><span class="pull-right text-red ts">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                         </c:when>
                                                         <c:otherwise>
-                                                            <td><span class="pull-right text-yellow">${realTimeData[configs]}vol%</span></td>
+                                                            <td><span class="pull-right text-yellow ts">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                         </c:otherwise>
                                                     </c:choose>
                                                 </a>
@@ -108,15 +108,18 @@
                                 <button type="button" class="btn btn-primary diagnosis" data-toggle="modal" data-target="#modal-default">
                                     智能诊断
                                 </button>
+
                                 <button type="button" class="btn btn-default mixingCycle" data-toggle="modal" data-target="#modal-default">
-                                    搅拌周期
+                                    效益报告
                                 </button>
+                                <!--
                                 <button type="button" class="btn btn-default statistics" data-toggle="modal" data-target="#modal-default">
                                     数据统计
                                 </button>
                                 <button type="button" class="btn btn-default gasForecast" data-toggle="modal" data-target="#modal-default">
                                     产气预测
                                 </button>
+                                -->
                             </div>
                         </div>
                         <!-- /.box-header -->
@@ -142,6 +145,60 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div id="showBenefit" style="width: 100%;height: 360px;">
+                                <div class="col-sm-8" style="height: 100%;" id="benefitChart"></div>
+                                <div class="col-sm-4" style="border-left: 1px solid #D5E2F3;padding-left: 25px;">
+                                    <div class="row">
+                                        <p class="text-center">
+                                            <strong>今日收益报告</strong>
+                                        </p>
+                                        <ul class="products-list product-list-in-box">
+                                            <li class="item" style="border-bottom: 1px solid #D2D6DE;">
+                                                <div class="product-img">
+                                                    <img src="/images/操作_蒸汽.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        搅拌速度调节
+                                                        <span class="label label-warning pull-right">2000元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                        用电低峰加快处理速度，同比节省0.2W元
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="item" style="border-bottom: 1px solid #D2D6DE;">
+                                                <div class="product-img">
+                                                    <img src="/images/闪电.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        合理调节稳定指数
+                                                        <span class="label label-warning pull-right">100元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                        减少多人工查看，同比节省时间3H，节约成本100元
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <div class="product-img">
+                                                    <img src="/images/效益.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        总效益
+                                                        <span class="label label-warning pull-right">2100元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                        能耗节省0.2万元，人工成本节省100元
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                             </div>
                         </div>
                     </div>
                     <!-- /.box -->
@@ -152,5 +209,5 @@
 </div>
 </body>
 <script src="/plugins/chart/echarts.js"></script>
-<script src="/js/anaerobicTank.js"></script>
+<script src="/js/anaerobicTank.js?v=0.1.5"></script>
 </html>

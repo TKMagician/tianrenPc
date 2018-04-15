@@ -5,7 +5,6 @@ import com.tianren.bean.Result;
 import com.tianren.bean.Sensor;
 import com.tianren.bean.SensorData;
 import com.tianren.service.CommonService;
-import com.tianren.service.GasTankService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

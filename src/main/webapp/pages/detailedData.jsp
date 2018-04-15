@@ -127,22 +127,22 @@
                                             <c:choose>
                                                 <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
                                                     <td><span class="label label-success">正常</span></td>
-                                                    <td><span class="label label-success">${realTimeData[configs]}</span></td>
+                                                    <td><span class="label label-success">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                 </c:when>
                                                 <c:when
                                                         test="${realTimeData[configs] > sensors[configs].highErrorValue
                                                             && realTimeData[configs] < sensors[configs].lowErrorValue}">
                                                     <td><span class="label label-danger">报警</span></td>
-                                                    <td><span class="label label-danger">${realTimeData[configs]}</span></td>
+                                                    <td><span class="label label-danger">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <td><span class="label label-warning">警告</span></td>
-                                                    <td><span class="label label-warning">${realTimeData[configs]}</span></td>
+                                                    <td><span class="label label-warning">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                 </c:otherwise>
                                             </c:choose>
                                             <td>
                                                 <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                        ${sensors[configs].suitableMinimum} - ${sensors[configs].suitableMaximum}
+                                                        ${sensors[configs].suitableMinimum}${sensors[configs].sensorUnit} - ${sensors[configs].suitableMaximum}${sensors[configs].sensorUnit}
                                                 </div>
                                             </td>
                                         </tr>
@@ -228,14 +228,14 @@
                                                     ${sensors[configs].nickName}
                                                     <c:choose>
                                                         <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
-                                                            <span class="pull-right text-green">${realTimeData[configs]}vol%</span>
+                                                            <span class="pull-right text-green">${realTimeData[configs]}${sensors[configs].sensorUnit}</span>
                                                         </c:when>
                                                         <c:when
                                                                 test="${realTimeData[configs] > sensors[configs].highErrorValue && realTimeData[configs] < sensors[configs].lowErrorValue}">
-                                                            <td><span class="pull-right text-red">${realTimeData[configs]}vol%</span></td>
+                                                            <td><span class="pull-right text-red">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                         </c:when>
                                                         <c:otherwise>
-                                                            <td><span class="pull-right text-yellow">${realTimeData[configs]}vol%</span></td>
+                                                            <td><span class="pull-right text-yellow">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                         </c:otherwise>
                                                     </c:choose>
                                                 </a>
@@ -288,22 +288,22 @@
                                                 <c:choose>
                                                     <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
                                                         <td><span class="label label-success">正常</span></td>
-                                                        <td><span class="label label-success">${realTimeData[configs]}</span></td>
+                                                        <td><span class="label label-success">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                     </c:when>
                                                     <c:when
                                                             test="${realTimeData[configs] > sensors[configs].highErrorValue
                                                                 && realTimeData[configs] < sensors[configs].lowErrorValue}">
                                                         <td><span class="label label-danger">报警</span></td>
-                                                        <td><span class="label label-danger">${realTimeData[configs]}</span></td>
+                                                        <td><span class="label label-danger">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                     </c:when>
                                                     <c:otherwise>
                                                         <td><span class="label label-warning">警告</span></td>
-                                                        <td><span class="label label-warning">${realTimeData[configs]}</span></td>
+                                                        <td><span class="label label-warning">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                     </c:otherwise>
                                                 </c:choose>
                                                 <td>
                                                     <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                            ${sensors[configs].suitableMinimum} - ${sensors[configs].suitableMaximum}
+                                                            ${sensors[configs].suitableMinimum}${sensors[configs].sensorUnit} - ${sensors[configs].suitableMaximum}${sensors[configs].sensorUnit}
                                                     </div>
                                                 </td>
                                             </tr>
@@ -354,22 +354,22 @@
                                             <c:choose>
                                                 <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
                                                     <td><span class="label label-success">正常</span></td>
-                                                    <td><span class="label label-success">${realTimeData[configs]}</span></td>
+                                                    <td><span class="label label-success">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                 </c:when>
                                                 <c:when
                                                         test="${realTimeData[configs] > sensors[configs].highErrorValue
                                                                 && realTimeData[configs] < sensors[configs].lowErrorValue}">
                                                     <td><span class="label label-danger">报警</span></td>
-                                                    <td><span class="label label-danger">${realTimeData[configs]}</span></td>
+                                                    <td><span class="label label-danger">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <td><span class="label label-warning">警告</span></td>
-                                                    <td><span class="label label-warning">${realTimeData[configs]}</span></td>
+                                                    <td><span class="label label-warning">${realTimeData[configs]}${sensors[configs].sensorUnit}</span></td>
                                                 </c:otherwise>
                                             </c:choose>
                                             <td>
                                                 <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                        ${sensors[configs].suitableMinimum} - ${sensors[configs].suitableMaximum}
+                                                        ${sensors[configs].suitableMinimum}${sensors[configs].sensorUnit} - ${sensors[configs].suitableMaximum}${sensors[configs].sensorUnit}
                                                 </div>
                                             </td>
                                         </tr>
@@ -392,6 +392,6 @@
     </div>
 </div>
 <script src="/plugins/chart/echarts.js"></script>
-<script src="/js/detailedData.js"></script>
+<script src="/js/detailedData.js?v=0.0.1"></script>
 </body>
 </html>

@@ -1,6 +1,165 @@
-var myChart = echarts.init(document.getElementById('showStatistics'));
+var myChart = echarts.init(document.getElementById('leftShow'));
+var benefitChart = echarts.init(document.getElementById('benefitChart'));
 
 showInitChart();
+$('#showBenefit').hide();
+
+$('.statistics').click(function () {
+    changeBtn($(this), $('#showStatistics'));
+    // showInitChart();
+});
+
+$('.benefit').click(function () {
+    changeBtn($(this), $('#showBenefit'));
+    var getDayTime = function(){
+        var temp = [];
+        for(var i = 0;i < 24;i++){
+            var hour = i;
+            temp.push(hour);
+        }
+        return temp;
+    }
+
+    var getRandomData = function(){
+        var temp = [];
+        for(var i = 0;i < 24;i++){
+            var item = Math.random() * 100 - Math.random() * 50;
+            temp.push(Math.abs(item).toFixed(2));
+        }
+
+        return temp;
+    }
+
+    option = {
+        color: ['#66CCFF', '#CC6666', '#66CCCC', '#FF9999', '#CCFF99'],
+        grid: [{
+            top: '10%',
+            bottom: 0,
+            left: '5%',
+            right: '5%',
+            height: '35%'
+        }, {
+            top: '54%',
+            bottom: 0,
+            left: '5%',
+            right: '5%',
+            height: '35%'
+        }],
+        tooltip: {
+            trigger: 'axis',
+            formatter: function(params){
+                if(params instanceof Array){
+                    var idxMap = [{
+                        text: '搅拌速率',
+                        data: []
+                    }, {
+                        text: '电费标准',
+                        data: []
+                    }];
+                    var time = params[0].axisValue;
+                    for(var i = 0;i < params.length;i++){
+                        var seriesIdx = params[i].seriesId.split(params[i].seriesId[0]);
+                        idxMap[seriesIdx[2]].data.push({
+                            marker: params[i].marker,
+                            seriesName: params[i].seriesName,
+                            data: params[i].data
+                        });
+                    };
+
+                    return '<div>'
+                        + '<time>' + time + '</time>'
+                        + '<br />'
+                        + idxMap.map(function(item){
+                            return '<span>' + item.text + '</span>' + item.data.map(function(i_item){
+                                return '<p style="margin: 0;padding: 0;">' + i_item.marker + i_item.seriesName + ': ' + i_item.data +  '</p>';
+                            }).join('');
+                        }).join('');
+                    + '</div>'
+                }
+            }
+        },
+        axisPointer: {
+            link: {
+                xAxisIndex: 'all'
+            }
+        },
+        legend: {
+            data:['搅拌速率', '电费标准']
+        },
+        xAxis: [{
+            type: 'category',
+            gridIndex: 0,
+            boundaryGap: false,
+            axisLabel: {
+                interval: 0
+            },
+            data: getDayTime()
+        }, {
+            type: 'category',
+            gridIndex: 1,
+            position: 'top',
+            boundaryGap: false,
+            axisLabel: {
+                show: false,
+                interval: 0
+            },
+            data: getDayTime()
+        }],
+        yAxis: [{
+            name: '搅拌速率',
+            type: 'value',
+            nameTextStyle: {
+                fontSize: 14
+            },
+            min: 0,
+            max: 100,
+            gridIndex: 0,
+            splitLine: {
+                lineStyle: {
+                    type: 'dashed'
+                }
+            }
+        }, {
+            name: '电费',
+            type: 'value',
+            nameTextStyle: {
+                fontSize: 14
+            },
+            min: 0,
+            max: 100,
+            gridIndex: 1,
+            inverse: true,
+            splitLine: {
+                lineStyle: {
+                    type: 'dashed'
+                }
+            }
+        }],
+        series: [
+            {
+                name:'搅拌速率',
+                type:'line',
+                data: getRandomData()
+            },
+            {
+                name:'电费标准',
+                type:'line',
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                data: getRandomData()
+            }
+        ]
+    };
+    benefitChart.setOption(option);
+});
+
+function changeBtn(element, showEle) {
+    $('.intelligent .btn').removeClass('btn-primary');
+    element.addClass('btn-primary');
+    $('#showStatistics').hide();
+    $('#showBenefit').hide();
+    showEle.show();
+}
 
 function showInitChart() {
     // 气柜3D柱状图

@@ -1,4 +1,4 @@
-var myChart = echarts.init(document.getElementById('showStatistics'));
+var myChart = echarts.init(document.getElementById('showStatisticsChart'));
 
 var startTime = 0;
 var endTime = 0;
@@ -64,13 +64,17 @@ $('.statistics').click(function () {
     showInitChart();
 });
 
-$('.security').click(function () {
-    changeBtn($(this), $('#showSecurity'));
+$('.benefit').click(function () {
+    changeBtn($(this), $('#showBenefit'));
 });
 
 $('.confirmBtn').click(function () {
     loadChart("line", "addTime", "d6", function (xNeedData, yNeedData) {
         return option = {
+            title: {
+                text: '储气走势图',
+                x: 'center'
+            },
             color: ['#5793f3'],
             tooltip: {
                 trigger: 'none',
@@ -126,8 +130,7 @@ function changeBtn(element, showEle) {
     $('.intelligent .btn').removeClass('btn-primary');
     element.addClass('btn-primary');
     $('#showStatistics').hide();
-    $('#showSecurity').hide();
-    $('#showDisasterResistance').hide();
+    $('#showBenefit').hide();
     showEle.show();
 }
 
@@ -135,9 +138,13 @@ function showInitChart() {
     startTime  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
     endTime  = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
     // 气柜3D柱状图
-
+    $('.timePick').val(startTime + ' - ' + endTime);
     loadChart("line", "addTime", "d1", function (xNeedData, yNeedData) {
         return option = {
+            title: {
+                text: '储气走势图',
+                x: 'center'
+            },
             color: ['#3398DB'],
             tooltip : {
                 trigger: 'axis',

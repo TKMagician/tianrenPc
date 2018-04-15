@@ -46,7 +46,7 @@ function showInitChart() {
             {
                 name: '总耗能',
                 type: 'line',
-                color:'#38D267',
+                color:'#67C294',
                 data: [900, 840, 900, 930, 870, 930, 870]
             },
             {
@@ -58,12 +58,9 @@ function showInitChart() {
                 "itemStyle": {
                     "normal": {
                         "barBorderRadius": 0,
-                        "color": "#6AB0B8",
+                        "color": "#62A7D1",
                         "label": {
                             "show": true,
-                            "textStyle": {
-                                "color": "rgba(0,0,0,1)"
-                            },
                             "position": "insideTop",
                             formatter : function(p) {
                                 return p.value > 0 ? (p.value ): '';
@@ -79,7 +76,7 @@ function showInitChart() {
                 "stack": "总量",
                 "itemStyle": {
                     "normal": {
-                        "color": "#D0917A",
+                        "color": "#F2A444",
                         "barBorderRadius": 0,
                         "label": {
                             "show": true,
@@ -98,7 +95,7 @@ function showInitChart() {
                 "stack": "总量",
                 "itemStyle": {
                     "normal": {
-                        "color": "#9CC5B2",
+                        "color": "#DB6F53",
                         "barBorderRadius": 0,
                         "label": {
                             "show": true,
@@ -158,7 +155,7 @@ function showBenefitChart() {
             {
                 name: '总效益',
                 type: 'line',
-                color:'#38D267',
+                color:'#67C294',
                 data: [1000, 1080, 1000, 1060, 1040, 1060, 1000]
             },
             {
@@ -170,7 +167,7 @@ function showBenefitChart() {
                 "itemStyle": {
                     "normal": {
                         "barBorderRadius": 0,
-                        "color": "#6AB0B8",
+                        "color": "#F2A444",
                         "label": {
                             "show": true,
                             "textStyle": {
@@ -191,7 +188,7 @@ function showBenefitChart() {
                 "stack": "总量",
                 "itemStyle": {
                     "normal": {
-                        "color": "#D0917A",
+                        "color": "#62A7D1",
                         "barBorderRadius": 0,
                         "label": {
                             "show": true,

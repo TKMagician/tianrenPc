@@ -7,13 +7,11 @@ import com.tianren.bean.SensorData;
 import com.tianren.dao.SensorDataMapper;
 import com.tianren.dao.SensorMapper;
 import com.tianren.service.CommonService;
-import com.tianren.service.GasTankService;
 import com.tianren.utils.EmptyUtils;
 import com.tianren.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

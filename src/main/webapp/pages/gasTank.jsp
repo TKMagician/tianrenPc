@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/css/common.css">
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
     <jsp:include page="header.jsp" flush="true"></jsp:include>
@@ -69,10 +70,10 @@
                                                 </a>
                                             </li>
                                         </c:forEach>
+                                        <!--
                                         <li>
                                             <a href="#">设计容量<span class="pull-right"> ${gasTankRealTimeData.d35}m <sup>3</sup></span></a>
                                         </li>
-                                        <!--
                                         <li>
                                             <a href="#" class="gasStorage">当前储气 <span class="pull-right text-green"> 1000m<sup>3</sup></span></a>
                                         </li>
@@ -97,17 +98,17 @@
                                         <div class="description-block border-right">
                                             <c:choose>
                                                 <c:when test="${realTimeData[configs] < sensors[configs].suitableMaximum && realTimeData[configs] > sensors[configs].suitableMinimum}">
-                                                    <span class="description-percentage text-green confirmBtn"><i class="fa fa-caret-down"></i>${realTimeData[configs]}</span>
+                                                    <span class="description-percentage text-green confirmBtn"><i class="fa fa-caret-down"></i>${realTimeData[configs]}${sensors[configs].sensorUnit}</span>
                                                 </c:when>
                                                 <c:when
                                                         test="${realTimeData[configs] > sensors[configs].highErrorValue && realTimeData[configs] < sensors[configs].lowErrorValue}">
-                                                    <span class="description-percentage text-red confirmBtn"><i class="fa fa-caret-up"></i>${realTimeData[configs]}</span>
+                                                    <span class="description-percentage text-red confirmBtn"><i class="fa fa-caret-up"></i>${realTimeData[configs]}${sensors[configs].sensorUnit}</span>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <span class="description-percentage text-yellow confirmBtn"><i class="fa fa-caret-left"></i>${realTimeData[configs]}</span>
+                                                    <span class="description-percentage text-yellow confirmBtn"><i class="fa fa-caret-left"></i>${realTimeData[configs]}${sensors[configs].sensorUnit}</span>
                                                 </c:otherwise>
                                             </c:choose>
-                                            <h5 class="description-text">${sensors[configs].nickName}浓度</h5>
+                                            <h5 class="description-text">${sensors[configs].nickName}</h5>
                                         </div>
                                     </div>
                                 </c:forEach>
@@ -160,14 +161,14 @@
                                 <button type="button" class="btn btn-default btn-primary statistics" data-toggle="modal" data-target="#modal-default">
                                     数据统计
                                 </button>
-                                <button type="button" class="btn btn-default security" data-toggle="modal" data-target="#modal-default">
+                                <button type="button" class="btn btn-default benefit" data-toggle="modal" data-target="#modal-default">
                                     效益报告
                                 </button>
                             </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <div style="width: 100%;height: 378px;">
+                            <div id="showStatistics" style="width: 100%;height: 378px;">
                                 <div class="input-group" style="width: 100%;height: 38px; ">
                                     <div class="input-group input-group-sm">
                                         <input type="text" class="form-control timePick" placeholder="请选择时间">
@@ -176,21 +177,128 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div id="showStatistics" style="width: 100%;height: 340px;"></div>
+                                <div id="showStatisticsChart" style="width: 100%;height: 340px;"></div>
                             </div>
-                            <div style="width: 100%;height: 378px;">
-                                <div class="input-group" style="width: 100%;height: 38px; ">
-                                    <div class="input-group input-group-sm">
-                                        <input type="text" class="form-control timePick" placeholder="请选择时间">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-info btn-flat confirmBtn">确认</button>
-                                        </span>
+                            <div id="showBenefit" style="width: 100%;display: none">
+                                <div class="col-sm-6" style="height: 100%;padding-right: 35px;">
+                                    <div class="row">
+                                        <p class="text-center">
+                                            <strong>今日效益详细报告</strong>
+                                        </p>
+                                        <ul class="products-list product-list-in-box">
+                                            <li class="item" style="border-bottom: 1px solid #D2D6DE;">
+                                                <div class="product-img">
+                                                    <img src="/images/操作_蒸汽.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        气发电效益
+                                                        <span class="label label-warning pull-right">10万元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                    产气250立方米，同比增长10%
+                                                </span>
+                                                </div>
+                                            </li>
+                                            <li class="item" style="border-bottom: 1px solid #D2D6DE;">
+                                                <div class="product-img">
+                                                    <img src="/images/闪电.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        产电效益
+                                                        <span class="label label-warning pull-right">3万元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                    发电2500度，同比下降5%
+                                                </span>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <div class="product-img">
+                                                    <img src="/images/效益.png" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">
+                                                        总效益
+                                                        <span class="label label-warning pull-right">13万元</span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                    其中发电效益3W，产气效益10W
+                                                </span>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div id="showStatistics" style="width: 100%;height: 340px;"></div>
+                                <div class="col-sm-6" style="border-left: 1px solid #D5E2F3;padding-left: 25px;">
+                                    <div class="row">
+                                    <p class="text-center">
+                                        <strong>今日能耗详细报告</strong>
+                                    </p>
+                                    <ul class="products-list product-list-in-box">
+                                        <li class="item" style="border-bottom: 1px solid #D2D6DE;">
+                                            <div class="product-img">
+                                                <img src="/images/操作_蒸汽.png" alt="Product Image">
+                                            </div>
+                                            <div class="product-info">
+                                                <a href="javascript:void(0)" class="product-title">
+                                                    气耗价格
+                                                    <span class="label label-warning pull-right">1万元</span>
+                                                </a>
+                                                <span class="product-description">
+                                                    消耗1000立方米，同比增长10%
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="item" style="border-bottom: 1px solid #D2D6DE;">
+                                            <div class="product-img">
+                                                <img src="/images/闪电.png" alt="Product Image">
+                                            </div>
+                                            <div class="product-info">
+                                                <a href="javascript:void(0)" class="product-title">
+                                                    电耗
+                                                    <span class="label label-warning pull-right">0.5万元</span>
+                                                </a>
+                                                <span class="product-description">
+                                                    号电250度，同比下降5%
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="item" style="border-bottom: 1px solid #D2D6DE;">
+                                            <div class="product-img">
+                                                <img src="/images/其他.png" alt="Product Image">
+                                            </div>
+                                            <div class="product-info">
+                                                <a href="javascript:void(0)" class="product-title">
+                                                    其他消耗
+                                                    <span class="label label-warning pull-right">0.5万元</span>
+                                                </a>
+                                                <span class="product-description">
+                                                    同比下降5%
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li class="item">
+                                            <div class="product-img">
+                                                <img src="/images/效益.png" alt="Product Image">
+                                            </div>
+                                            <div class="product-info">
+                                                <a href="javascript:void(0)" class="product-title">
+                                                    总消耗
+                                                    <span class="label label-warning pull-right">2万元</span>
+                                                </a>
+                                                <span class="product-description">
+                                                    总消耗2万元，同比下降10%
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                </div>
                             </div>
                             <!--
-                                <div id="showSecurity" style="width: 100%;height: 345px;display: none">
+                                <div id="showBenefit" style="width: 100%;height: 345px;display: none">
                                     <div class="col-sm-8" style="height: 100%;">
                                         <video width="100%"  height="300px" controls="controls">
                                             <source src="/images/vid.mp4" type="video/mp4" />
@@ -254,6 +362,6 @@
     </div>
 </div>
 <script src="/plugins/chart/echarts.js"></script>
-<script src="/js/gasTank.js?v=0.0.3"></script>
+<script src="/js/gasTank.js?v=0.1.4"></script>
 </body>
 </html>
